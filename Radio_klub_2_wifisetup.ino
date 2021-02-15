@@ -32,17 +32,8 @@ void setupAP(void);
 ESP8266WebServer server(80);
 
 
-
-
-
-
-
-
-
 // To run, set your ESP8266 build to 160MHz, update the SSID info, and upload.
 // Enter your WiFi setup here:
-//const char *SSID = "Cafe_au_lait";
-//const char *PASSWORD = "R4puszedli";
 // Uncomment one link (I have added 6 radio streaming link, you can check each)
 //flawlessly working radio streaming link
 const char *URL="http://hu-stream02.klubradio.hu:8080/bpstream"; 
@@ -86,20 +77,8 @@ void setup()
 Serial.begin(115200);
 delay(1000);
 
-/* Old wifi setup 
-Serial.println("Connecting to WiFi");
-WiFi.disconnect();
-WiFi.softAPdisconnect(true);
-WiFi.mode(WIFI_STA);
-WiFi.begin(SSID, PASSWORD);
-// Try forever
-while (WiFi.status() != WL_CONNECTED) {
-Serial.println("...Connecting to WiFi");
-delay(1000);
-}
 
-*/
-// New WIFIsetup
+// WIFIsetup
 Serial.println();
   Serial.println("Disconnecting current wifi connection");
   WiFi.disconnect();
