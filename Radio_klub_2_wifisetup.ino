@@ -31,10 +31,6 @@ void setupAP(void);
 //Establishing Local server at port 80 whenever required
 ESP8266WebServer server(80);
 
-
-// To run, set your ESP8266 build to 160MHz, update the SSID info, and upload.
-// Enter your WiFi setup here:
-// Uncomment one link (I have added 6 radio streaming link, you can check each)
 //flawlessly working radio streaming link
 const char *URL="http://hu-stream02.klubradio.hu:8080/bpstream"; 
 //const char *URL="http://ndr-edge-10ad-fra-dtag-cdn.cast.addradio.de/ndr/ndr1niedersachsen/hannover/mp3/128/stream.mp3";
@@ -47,6 +43,7 @@ AudioGeneratorMP3 *mp3;
 AudioFileSourceICYStream *file;
 AudioFileSourceBuffer *buff;
 AudioOutputI2SNoDAC *out;
+
 // Called when a metadata event occurs (i.e. an ID3 tag, an ICY block, etc.
 void MDCallback(void *cbData, const char *type, bool isUnicode, const char *string)
 {
@@ -77,8 +74,7 @@ void setup()
 Serial.begin(115200);
 delay(1000);
 
-
-// WIFIsetup
+//  WIFIsetup
 Serial.println();
   Serial.println("Disconnecting current wifi connection");
   WiFi.disconnect();
@@ -164,6 +160,7 @@ if (!mp3->loop()) mp3->stop();
 } else {
 Serial.printf("MP3 done\n");
 delay(1000);
+reboot();
 }
 }
 
@@ -315,4 +312,10 @@ void createWebServer()
 
     });
   }
+}
+
+void reboot() {
+  wdt_disable();
+  wdt_enable(WDTO_15MS);
+  while (1) {}
 }
