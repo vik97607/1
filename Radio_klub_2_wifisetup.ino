@@ -32,13 +32,8 @@ void setupAP(void);
 ESP8266WebServer server(80);
 
 //flawlessly working radio streaming link
-const char *URL="http://hu-stream02.klubradio.hu:8080/bpstream"; 
-//const char *URL="http://ndr-edge-10ad-fra-dtag-cdn.cast.addradio.de/ndr/ndr1niedersachsen/hannover/mp3/128/stream.mp3";
-//const char *URL="http://jazz.streamr.ru/jazz-64.mp3";
-// It will work but buffer alot
-//const char *URL="http://stream.ca.morow.com:8003/morow_med.mp3";
-//const char *URL= "http://ndr-ndr1radiomv-schwerin.sslcast.addradio.de/ndr/ndr1radiomv/schwerin/mp3/128/stream.mp3";
-//const char *URL="http://mms.hoerradar.de:8000/rst128k";//Radio RST(German)
+const char *URL="http://hu-stream05.klubradio.hu:8080/bpstream"; 
+
 AudioGeneratorMP3 *mp3;
 AudioFileSourceICYStream *file;
 AudioFileSourceBuffer *buff;
